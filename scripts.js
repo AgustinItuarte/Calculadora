@@ -12,7 +12,12 @@ const num8 = document.querySelector('.numero8').value = 8;
 const num9 = document.querySelector('.numero9').value = 9;
 const num0 = document.querySelector('.numero0').value = 0;
 
-const sumaBoton = document.querySelector('.suma').value = " +";
+const botonSuma = document.querySelector('.suma').value = " + ";
+const botonResta = document.querySelector('.resta').value = " - ";
+const botonMulti = document.querySelector('.multi').value = " * ";
+const botonDiv = document.querySelector('.div').value = " / ";
+const botonIgual = document.querySelector('.igual').value = " =";
+
 // pantalla.value = num1;
 
 // botones.addEventListener('click', () => {
@@ -23,10 +28,48 @@ const sumaBoton = document.querySelector('.suma').value = " +";
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
     let pantallaValor = pantalla.value;
-    if (pantallaValor.indexOf('+') > -1) {
-        let operadorStr = pantallaValor.split(" ").pop();
-        console.log(operadorStr);
-    }
+    let resultado = 0;
+    let operador;
+    let num1 = 0;
+    let num2 = 0;
+    if (pantallaValor.indexOf(' =') > -1) {
+        let operadorStr = pantallaValor.split(" ");
+        for (let i = 0; i < operadorStr.length; i++) {
+            if (operadorStr[i] == "+" || operadorStr[i] == "-" || operadorStr[i] == "*" || operadorStr[i] == "/") {
+
+                operador = operadorStr[i];
+                num1 = Math.floor(operadorStr[i - 1]);
+                num2 = Math.floor(operadorStr[i + 1]);
+                resultado = operar(num1, num2, operador);
+                num1 = 0;
+                num2 = 0;
+                console.log(resultado);
+                continue
+                
+
+            } 
+            if (i == 3) {
+                // console.log(resultado);
+                operador = operadorStr[i];
+                num2 = Math.floor(operadorStr[i + 1]);
+                resultado = operar(resultado, num2, operador);
+
+                operador = "";
+                num2 = 0;
+            }
+            // else if (i > 2 && ( operadorStr[i] == "+" || operadorStr[i] == "-" || operadorStr[i] == "*" || operadorStr[i] == "/")) {
+            //     operador = operadorStr[i];
+            //     console.log(operador);
+            // }
+
+        }
+        // let operadorStr = pantallaValor.split(" ");
+        // let num1 = Math.floor(operadorStr[0]);
+        // let num2 = Math.floor(operadorStr[2]);
+        // let operador = operadorStr[1];
+        // pantalla.value = operar(num1, num2, operador);
+        // console.log(operadorStr);
+     }
 }))
 
 function suma(num1, num2) {
@@ -57,4 +100,4 @@ function operar(num1, num2, operador) {
     }
 }
 
-// console.log(operar(5, 1, "/"))
+// console.log(operar(5, 1, "/"))00
