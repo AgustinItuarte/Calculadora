@@ -17,14 +17,12 @@ const botonResta = document.querySelector('.resta').value = " - ";
 const botonMulti = document.querySelector('.multi').value = " * ";
 const botonDiv = document.querySelector('.div').value = " / ";
 const botonIgual = document.querySelector('.igual').value = " =";
+const limpiar = document.querySelector('.limpiar');
 
 // pantalla.value = num1;
 
-// botones.addEventListener('click', () => {
-//     if (botones.class == "numero1") {
-//         console.log('hola')
-//     }
-// })
+
+
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
     let pantallaValor = pantalla.value;
@@ -35,6 +33,7 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     if (pantallaValor.indexOf(' =') > -1) {
         let operadorStr = pantallaValor.split(" ");
         for (let i = 0; i < operadorStr.length; i++) {
+            
             num1 = Math.floor(operadorStr[0]);
             num2 = Math.floor(operadorStr[2]);
             operador = operadorStr[1];
@@ -42,34 +41,17 @@ botones.forEach(boton => boton.addEventListener('click', () => {
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
             console.log(operadorStr);
-            // console.log(operadorStr[i]);
-            // operador = operadorStr[i];
-            // num1 = Math.floor(operadorStr[i - 1]);
-            // num2 = Math.floor(operadorStr[i + 1]);
-            // operadorStr.shift();
-            // resultado = operar(num1, num2, operador);
-            // num1 = 0;
-            // num2 = 0;
-            // console.log(operadorStr);            
-            
-            // if (i == 3) {
-            //     operador = operadorStr[i];
-            //     num2 = Math.floor(operadorStr[i + 1]);
-            //     resultado = operar(resultado, num2, operador);
-            //     operador = "";
-            //     num2 = 0;
-            //     // console.log(operadorStr)
-            // }
-
+            if (operadorStr.length == 2) {
+                pantalla.value = operadorStr[0];
+            }
+                
         }
-        // let operadorStr = pantallaValor.split(" ");
-        // let num1 = Math.floor(operadorStr[0]);
-        // let num2 = Math.floor(operadorStr[2]);
-        // let operador = operadorStr[1];
-        // pantalla.value = operar(num1, num2, operador);
-        // console.log(operadorStr);
      }
 }))
+
+limpiar.addEventListener('click', () => {
+    pantalla.value = "";
+})
 
 function suma(num1, num2) {
     return num1 + num2;
@@ -98,5 +80,3 @@ function operar(num1, num2, operador) {
         return div(num1, num2);
     }
 }
-
-// console.log(operar(5, 1, "/"))00
