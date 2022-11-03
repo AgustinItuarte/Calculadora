@@ -11,6 +11,7 @@ const num7 = document.querySelector('.numero7').value = 7;
 const num8 = document.querySelector('.numero8').value = 8;
 const num9 = document.querySelector('.numero9').value = 9;
 const num0 = document.querySelector('.numero0').value = 0;
+const decimal = document.querySelector('.decimal').value = ".";
 
 const botonSuma = document.querySelector('.suma').value = " + ";
 const botonResta = document.querySelector('.resta').value = " - ";
@@ -40,10 +41,13 @@ botones.forEach(boton => boton.addEventListener('click', () => {
             resultado = operar(num1, num2, operador);
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
-            console.log(operadorStr);
-            if (operadorStr.length == 2) {
+            console.log(operadorStr)
+            if (operadorStr.length == 2 && operadorStr[0] != "Infinity") {
                 pantalla.value = operadorStr[0];
+            } else if (operadorStr[0] == Infinity) {
+                pantalla.value = "No puedes dividir por 0";
             }
+            
                 
         }
      }
