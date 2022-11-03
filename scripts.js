@@ -35,31 +35,30 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     if (pantallaValor.indexOf(' =') > -1) {
         let operadorStr = pantallaValor.split(" ");
         for (let i = 0; i < operadorStr.length; i++) {
-            if (operadorStr[i] == "+" || operadorStr[i] == "-" || operadorStr[i] == "*" || operadorStr[i] == "/") {
-
-                operador = operadorStr[i];
-                num1 = Math.floor(operadorStr[i - 1]);
-                num2 = Math.floor(operadorStr[i + 1]);
-                resultado = operar(num1, num2, operador);
-                num1 = 0;
-                num2 = 0;
-                console.log(resultado);
-                continue
-                
-
-            } 
-            if (i == 3) {
-                // console.log(resultado);
-                operador = operadorStr[i];
-                num2 = Math.floor(operadorStr[i + 1]);
-                resultado = operar(resultado, num2, operador);
-
-                operador = "";
-                num2 = 0;
-            }
-            // else if (i > 2 && ( operadorStr[i] == "+" || operadorStr[i] == "-" || operadorStr[i] == "*" || operadorStr[i] == "/")) {
+            num1 = Math.floor(operadorStr[0]);
+            num2 = Math.floor(operadorStr[2]);
+            operador = operadorStr[1];
+            resultado = operar(num1, num2, operador);
+            operadorStr.splice(0, 3)
+            operadorStr.unshift(resultado)
+            console.log(operadorStr);
+            // console.log(operadorStr[i]);
+            // operador = operadorStr[i];
+            // num1 = Math.floor(operadorStr[i - 1]);
+            // num2 = Math.floor(operadorStr[i + 1]);
+            // operadorStr.shift();
+            // resultado = operar(num1, num2, operador);
+            // num1 = 0;
+            // num2 = 0;
+            // console.log(operadorStr);            
+            
+            // if (i == 3) {
             //     operador = operadorStr[i];
-            //     console.log(operador);
+            //     num2 = Math.floor(operadorStr[i + 1]);
+            //     resultado = operar(resultado, num2, operador);
+            //     operador = "";
+            //     num2 = 0;
+            //     // console.log(operadorStr)
             // }
 
         }
