@@ -20,10 +20,6 @@ const botonDiv = document.querySelector('.div').value = " / ";
 const botonIgual = document.querySelector('.igual').value = " =";
 const limpiar = document.querySelector('.limpiar');
 
-// pantalla.value = num1;
-
-
-
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
     let pantallaValor = pantalla.value;
@@ -33,24 +29,21 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     let num2 = 0;
     if (pantallaValor.indexOf(' =') > -1) {
         let operadorStr = pantallaValor.split(" ");
-        for (let i = 0; i < operadorStr.length; i++) {
-            
+        
+        while (operadorStr.length != 2) {
             num1 = Math.floor(operadorStr[0]);
             num2 = Math.floor(operadorStr[2]);
             operador = operadorStr[1];
             resultado = operar(num1, num2, operador);
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
-            console.log(operadorStr)
-            if (operadorStr.length == 2 && operadorStr[0] != "Infinity") {
+            if (operadorStr.length == 2 && operadorStr[0] != Infinity) {
                 pantalla.value = operadorStr[0];
             } else if (operadorStr[0] == Infinity) {
                 pantalla.value = "No puedes dividir por 0";
             }
-            
-                
-        }
-     }
+        }           
+    }
 }))
 
 limpiar.addEventListener('click', () => {
