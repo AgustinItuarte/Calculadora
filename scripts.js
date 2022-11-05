@@ -31,12 +31,13 @@ botones.forEach(boton => boton.addEventListener('click', () => {
         let operadorStr = pantallaValor.split(" ");
         
         while (operadorStr.length != 2) {
-            num1 = Math.floor(operadorStr[0]);
-            num2 = Math.floor(operadorStr[2]);
+            num1 = parseFloat(operadorStr[0]);
+            num2 = parseFloat(operadorStr[2]);
             operador = operadorStr[1];
             resultado = operar(num1, num2, operador);
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
+            
             if (operadorStr.length == 2 && operadorStr[0] != Infinity) {
                 pantalla.value = operadorStr[0];
             } else if (operadorStr[0] == Infinity) {
