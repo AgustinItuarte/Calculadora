@@ -1,3 +1,5 @@
+// Botones
+
 const pantalla = document.querySelector('#pantalla');
 const botones = document.querySelectorAll('button');
 
@@ -18,7 +20,10 @@ const botonResta = document.querySelector('.resta').value = " - ";
 const botonMulti = document.querySelector('.multi').value = " * ";
 const botonDiv = document.querySelector('.div').value = " / ";
 const botonIgual = document.querySelector('.igual').value = " =";
+const borrar = document.querySelector('.borrar');
 const limpiar = document.querySelector('.limpiar');
+
+// Funcion para mostrar en pantalla los valores.
 
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
@@ -27,9 +32,24 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     let operador;
     let num1 = 0;
     let num2 = 0;
+
+    // Funcion para desaparecer el boton decimal.
+
+    botones[10].addEventListener('click', () => {
+        botones[10].style.display = "none";
+    })
+    
+    for (let i = 11; i <= 16; i++) {
+        botones[i].addEventListener('click', () => {
+            botones[10].style.display = "inline";
+        }) 
+    }
+    
+    // Funcion que calcula lo que esta en la pantalla.
+
     if (pantallaValor.indexOf(' =') > -1) {
         let operadorStr = pantallaValor.split(" ");
-        
+
         while (operadorStr.length != 2) {
             num1 = parseFloat(operadorStr[0]);
             num2 = parseFloat(operadorStr[2]);
