@@ -23,7 +23,7 @@ const botonIgual = document.querySelector('.igual').value = " =";
 const borrar = document.querySelector('.borrar');
 const limpiar = document.querySelector('.limpiar');
 
-// Funcion para mostrar en pantalla los valores.
+// Logica para mostrar en pantalla los valores.
 
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
@@ -32,20 +32,8 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     let operador;
     let num1 = 0;
     let num2 = 0;
-
-    // Funcion para desaparecer el boton decimal.
-
-    botones[10].addEventListener('click', () => {
-        botones[10].style.display = "none";
-    })
     
-    for (let i = 11; i <= 16; i++) {
-        botones[i].addEventListener('click', () => {
-            botones[10].style.display = "inline";
-        }) 
-    }
-    
-    // Funcion que calcula lo que esta en la pantalla.
+    // Logica que calcula lo que esta en la pantalla.
 
     if (pantallaValor.indexOf(' =') > -1) {
         let operadorStr = pantallaValor.split(" ");
@@ -66,6 +54,27 @@ botones.forEach(boton => boton.addEventListener('click', () => {
         }           
     }
 }))
+
+// Evento para desaparecer el boton decimal.
+
+botones[10].addEventListener('click', () => {
+    botones[10].style.display = "none";
+})
+
+for (let i = 11; i <= 16; i++) {
+    botones[i].addEventListener('click', () => {
+        botones[10].style.display = "inline";
+    }) 
+}
+
+// Evento para borrar numeros.
+
+borrar.addEventListener('click', () => {
+    let valor = borrarLetra(pantalla.value);
+    pantalla.value = valor;
+})
+
+// Evento para limpiar pantalla.
 
 limpiar.addEventListener('click', () => {
     pantalla.value = "";
@@ -97,4 +106,10 @@ function operar(num1, num2, operador) {
     } else if (operador == "/") {
         return div(num1, num2);
     }
+}
+
+function borrarLetra(pantallaValor) {
+    console.log(pantallaValor)
+    let valorBorrado = pantallaValor.slice(0, -1);
+    return valorBorrado;
 }
