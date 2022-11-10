@@ -33,6 +33,9 @@ botones.forEach(boton => boton.addEventListener('click', () => {
     let num1 = 0;
     let num2 = 0;
     
+    if (pantalla.value === " =" || pantalla.value === " + " || pantalla.value === " - " || pantalla.value === " * " || pantalla.value === " / " || pantalla.value === ".") {
+        pantalla.value = "";
+    }
     // Logica que calcula lo que esta en la pantalla.
 
     if (pantallaValor.indexOf(' =') > -1) {
@@ -45,13 +48,13 @@ botones.forEach(boton => boton.addEventListener('click', () => {
             resultado = operar(num1, num2, operador);
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
-            
+            console.log(operadorStr);
             if (operadorStr.length == 2 && operadorStr[0] != Infinity) {
                 pantalla.value = operadorStr[0];
             } else if (operadorStr[0] == Infinity) {
                 pantalla.value = "No puedes dividir por 0";
             }
-        }           
+        }
     }
 }))
 
