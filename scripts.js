@@ -48,12 +48,15 @@ botones.forEach(boton => boton.addEventListener('click', () => {
             resultado = operar(num1, num2, operador);
             operadorStr.splice(0, 3)
             operadorStr.unshift(resultado)
-            console.log(operadorStr);
             if (operadorStr.length == 2 && operadorStr[0] != Infinity) {
                 pantalla.value = operadorStr[0];
             } else if (operadorStr[0] == Infinity) {
                 pantalla.value = "No puedes dividir por 0";
             }
+        }
+        
+        if (operadorStr[1] == '=') {
+            pantalla.value = operadorStr[0];
         }
     }
 }))
