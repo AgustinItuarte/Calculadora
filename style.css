@@ -24,8 +24,18 @@ body {
 button {
     height: 6vw;
     width: 6vw;
+    font-size: 17px;
+    transition-duration: 0.4s;
+    padding: 0px;
     text-align: center;
-    background:white
+    background:white;
+    cursor: pointer;
+    font-weight:bolder;
+}
+
+button:hover {
+    background-color: darkcyan;
+    color: white;
 }
 
 input {
@@ -33,9 +43,21 @@ input {
     height: 6vw;
     width: 24.3vw;
     text-align: end;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .igual {
     background-color:darkcyan;
+}
+
+@media only screen and (max-width: 700px) {
+    input {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 0px;
+        text-align: center;
+    }
 }
