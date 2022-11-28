@@ -28,11 +28,16 @@ const limpiar = document.querySelector('.limpiar');
 botones.forEach(boton => boton.addEventListener('click', () => {
     pantalla.value += boton.value;
     let pantallaValor = pantalla.value;
+    let ultimoValor = pantallaValor.substr(pantallaValor.length -1);
     let resultado = 0;
     let operador;
     let num1 = 0;
     let num2 = 0;
-    
+
+    if (ultimoValor === " ") {
+        botones[14].style.display = "inline";
+    }
+
     if (pantalla.value === " =" || pantalla.value === " + " || pantalla.value === " - " || pantalla.value === " * " || pantalla.value === " / " || pantalla.value === ".") {
         pantalla.value = "";
     }
@@ -50,8 +55,10 @@ botones.forEach(boton => boton.addEventListener('click', () => {
             operadorStr.unshift(resultado)
             if (operadorStr.length == 2 && operadorStr[0] != Infinity) {
                 pantalla.value = operadorStr[0];
+                botones[14].style.display = "inline";
             } else if (operadorStr[0] == Infinity) {
                 pantalla.value = "No puedes dividir por 0";
+                botones[14].style.display = "inline";
             }
         }
         
@@ -63,15 +70,15 @@ botones.forEach(boton => boton.addEventListener('click', () => {
 
 // Evento para desaparecer el boton decimal.
 
-botones[10].addEventListener('click', () => {
-    botones[10].style.display = "none";
+botones[14].addEventListener('click', () => {
+    botones[14].style.display = "none";
 })
 
-for (let i = 11; i <= 16; i++) {
-    botones[i].addEventListener('click', () => {
-        botones[10].style.display = "inline";
-    }) 
-}
+// for (let i = 11; i <= 16; i++) {
+//     botones[i].addEventListener('click', () => {
+//         botones[10].style.display = "inline";
+//     }) 
+// }
 
 // Evento para borrar numeros.
 
