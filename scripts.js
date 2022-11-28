@@ -23,6 +23,42 @@ const botonIgual = document.querySelector('.igual').value = " =";
 const borrar = document.querySelector('.borrar');
 const limpiar = document.querySelector('.limpiar');
 
+// Soporte de teclado.
+
+document.addEventListener('keypress', function(evento){
+    var tecladoValor = evento.keyCode;
+    console.log(tecladoValor);
+    if(tecladoValor == 43) {
+        pantalla.value += " + ";
+    }else if(tecladoValor == 45) {
+        pantalla.value += " - ";
+    }else if(tecladoValor == 42) {
+        pantalla.value += " * ";
+    }else if(tecladoValor == 47) {
+        pantalla.value += " / ";
+    }else if(tecladoValor == 48) {
+        pantalla.value += 0;
+    }else if(tecladoValor == 49) {
+        pantalla.value += 1;
+    }else if(tecladoValor == 50) {
+        pantalla.value += 2;
+    }else if(tecladoValor == 51) {
+        pantalla.value += 3;
+    }else if(tecladoValor == 52) {
+        pantalla.value += 4;
+    }else if(tecladoValor == 53) {
+        pantalla.value += 5;
+    }else if(tecladoValor == 54) {
+        pantalla.value += 6;
+    }else if(tecladoValor == 55) {
+        pantalla.value += 7;
+    }else if(tecladoValor == 56) {
+        pantalla.value += 8;
+    }else if(tecladoValor == 57) {
+        pantalla.value += 9;
+    }
+});
+
 // Logica para mostrar en pantalla los valores.
 
 botones.forEach(boton => boton.addEventListener('click', () => {
@@ -73,12 +109,6 @@ botones.forEach(boton => boton.addEventListener('click', () => {
 botones[14].addEventListener('click', () => {
     botones[14].style.display = "none";
 })
-
-// for (let i = 11; i <= 16; i++) {
-//     botones[i].addEventListener('click', () => {
-//         botones[10].style.display = "inline";
-//     }) 
-// }
 
 // Evento para borrar numeros.
 
