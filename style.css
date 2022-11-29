@@ -46,6 +46,7 @@ input {
     text-align: end;
     font-size: 40px;
     pointer-events: none;
+    margin: 20px;
 }
 
 .igual {
