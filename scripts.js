@@ -27,7 +27,7 @@ const limpiar = document.querySelector('.limpiar');
 
 document.addEventListener('keypress', function(evento){
     var tecladoValor = evento.keyCode;
-    console.log(tecladoValor);
+    
     if(tecladoValor == 43) {
         pantalla.value += " + ";
     }else if(tecladoValor == 45) {
